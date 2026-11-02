@@ -1,0 +1,126 @@
+<%- include('../partials/head') %>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">Content · Quảng cáo Facebook · Fanpage</p>
+      <h1 class="display reveal" id="hero-title">Nội dung <em>mộc</em>,<br>chuyển đổi <span class="underline">thật</span>.</h1>
+      <p class="lead reveal">Mộc Nhiên viết bài quảng cáo, chạy Facebook Ads, chăm sóc Fanpage và tư vấn marketing cho chủ shop và Ads thủ — chữ chân thật, số liệu rõ ràng.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary btn-lg" href="#dich-vu">Chọn dịch vụ &amp; đăng ký <%- icon('arrow') %></a>
+        <a class="btn btn-ghost btn-lg" href="<%= site.zalo %>" target="_blank" rel="noopener"><%- icon('chat') %> Nhắn Zalo</a>
+      </div>
+      <ul class="hero-proof reveal">
+        <li><%- icon('check') %> Giao bài 24–48 giờ</li>
+        <li><%- icon('check') %> Đúng chính sách Facebook</li>
+        <li><%- icon('check') %> Tư vấn trước, báo giá sau</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="rings"></div>
+      <article class="ad-card reveal">
+        <header class="ad-head">
+          <span class="ad-avatar"></span>
+          <span><strong>Shop của bạn</strong><small>Được tài trợ</small></span>
+        </header>
+        <p class="ad-hook">“Mặc thử 3 lần, lần nào cũng được hỏi mua ở đâu…”</p>
+        <p class="ad-body">Câu mở đầu khiến người lướt phải dừng tay. Thân bài chạm đúng nỗi đau. Lời kêu gọi rõ ràng.</p>
+        <div class="ad-img"><span class="ad-img-label">Hình ảnh sản phẩm</span></div>
+        <footer class="ad-foot"><span>Mua ngay</span></footer>
+      </article>
+      <div class="float-chip chip-a reveal"><%- icon('clock') %> 24–48 giờ</div>
+      <div class="float-chip chip-b reveal"><%- icon('shield') %> An toàn tài khoản</div>
+    </div>
+  </div>
+</section>
+
+<section class="promise-strip" aria-label="Cam kết của Mộc Nhiên">
+  <div class="container promise-grid">
+    <% promises.forEach(function (p) { %>
+      <div class="promise reveal">
+        <span class="promise-icon"><%- icon(p.icon) %></span>
+        <div><h2 class="promise-title"><%= p.title %></h2><p><%= p.text %></p></div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section services" id="dich-vu" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head split reveal">
+      <div>
+        <p class="eyebrow">Bốn nhóm dịch vụ</p>
+        <h2 class="h2" id="services-title">Chọn đúng việc bạn cần.<br>Mộc Nhiên lo phần còn lại.</h2>
+      </div>
+      <p class="lead">Mỗi dịch vụ có trang riêng với các gói chi tiết và form đăng ký. Giá được báo riêng sau khi tư vấn — đúng ngành, đúng khối lượng, đúng mục tiêu.</p>
+    </div>
+
+    <div class="service-grid">
+      <% services.forEach(function (s) { %>
+        <a class="service-card reveal" href="/dich-vu/<%= s.slug %>">
+          <div class="service-top">
+            <span class="service-num"><%= s.number %></span>
+            <span class="service-icon"><%- icon(s.icon) %></span>
+          </div>
+          <h3 class="service-name"><%= s.name %></h3>
+          <p class="service-short"><%= s.short %></p>
+          <ul class="service-points">
+            <% s.highlights.forEach(function (h) { %><li><%- icon('check') %><%= h %></li><% }) %>
+          </ul>
+          <span class="service-link">Xem chi tiết &amp; đăng ký <%- icon('arrow') %></span>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto" aria-labelledby="manifesto-title">
+  <div class="container manifesto-grid">
+    <div class="reveal">
+      <p class="eyebrow eyebrow-light">Vì sao là Mộc Nhiên</p>
+      <h2 class="manifesto-quote" id="manifesto-title">Không viết cho hay.<br><em>Viết để bán.</em></h2>
+    </div>
+    <ul class="principles">
+      <li class="reveal">
+        <h3>Mộc — chân thật</h3>
+        <p>Không hứa hẹn thổi phồng, không chiêu trò. Nội dung nói đúng điều sản phẩm làm được — nên khách tin và mua lại.</p>
+      </li>
+      <li class="reveal">
+        <h3>Nhiên — tự nhiên</h3>
+        <p>Giọng văn như người thật nói chuyện, hợp với khách hàng của bạn, không đọc giống quảng cáo rập khuôn.</p>
+      </li>
+      <li class="reveal">
+        <h3>Content — có mục tiêu</h3>
+        <p>Mỗi bài có một nhiệm vụ: dừng tay lướt, tạo tương tác hay ra đơn. Đo được, tối ưu được.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<%- include('../partials/process') %>
+
+<%- include('../partials/faq') %>
+
+<section class="section final-cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div>
+        <p class="eyebrow">Bắt đầu ngay hôm nay</p>
+        <h2 class="h2" id="cta-title">Bạn cần Mộc Nhiên hỗ trợ việc gì?</h2>
+        <p class="lead">Chọn dịch vụ để mở form đăng ký. Mộc Nhiên sẽ liên hệ tư vấn và báo giá riêng.</p>
+      </div>
+      <div class="cta-choices">
+        <% services.forEach(function (s) { %>
+          <a class="cta-choice" href="/dich-vu/<%= s.slug %>#dang-ky">
+            <span class="cta-choice-icon"><%- icon(s.icon) %></span>
+            <span><%= s.name %></span>
+            <%- icon('arrow', 'icon cta-arrow') %>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+<section class="section simple-page">
+  <div class="container narrow">
+    <h1 class="h2">Chưa gửi được thông tin</h1>
+    <p class="lead"><%= payload.message %></p>
+    <% if (payload.errors) { %>
+      <ul class="error-list">
+        <% Object.values(payload.errors).forEach(function (e) { %><li><%= e %></li><% }) %>
+      </ul>
+    <% } %>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="<%= back %>">Quay lại form</a>
+      <a class="btn btn-ghost" href="<%= site.zalo %>" target="_blank" rel="noopener">Nhắn Zalo <%= site.phoneDisplay %></a>
+    </div>
+  </div>
+</section>
+<%- include('../partials/foot') %>

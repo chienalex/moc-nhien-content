@@ -1,0 +1,40 @@
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="footer-logo">Mộc Nhiên <span>Content</span></p>
+      <p class="footer-tagline"><%= site.tagline %></p>
+      <p class="footer-note">Không nhận ngành hàng vi phạm chính sách Facebook hoặc pháp luật.</p>
+    </div>
+    <div>
+      <p class="footer-title">Dịch vụ</p>
+      <ul class="footer-links">
+        <% services.forEach(function (s) { %><li><a href="/dich-vu/<%= s.slug %>"><%= s.name %></a></li><% }) %>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">Liên hệ</p>
+      <ul class="footer-links">
+        <li><a href="<%= site.zalo %>" target="_blank" rel="noopener">Zalo: <%= site.phoneDisplay %></a></li>
+        <li><a href="tel:<%= site.phone %>">Điện thoại: <%= site.phoneDisplay %></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <%= year %> <%= site.name %>. Mọi quyền được bảo lưu.</p>
+  </div>
+</footer>
+
+<div class="float-contact" aria-label="Liên hệ nhanh">
+  <a class="float-btn float-zalo" href="<%= site.zalo %>" target="_blank" rel="noopener" aria-label="Nhắn Zalo cho Mộc Nhiên">
+    <span class="zalo-word" aria-hidden="true">Zalo</span>
+  </a>
+  <a class="float-btn float-call" href="tel:<%= site.phone %>" aria-label="Gọi <%= site.phoneDisplay %>">
+    <%- icon('phone') %>
+  </a>
+</div>
+
+<script src="/js/main.js?v=1" defer></script>
+</body>
+</html>

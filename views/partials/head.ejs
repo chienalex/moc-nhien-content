@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>">
+  <% if (typeof noindex !== 'undefined' && noindex) { %><meta name="robots" content="noindex"><% } else { %><link rel="canonical" href="<%= canonical %>"><% } %>
+  <meta name="theme-color" content="#F6F1E7">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="<%= site.name %>">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:url" content="<%= canonical %>">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+  <script src="/js/early.js"></script>
+  <script type="application/ld+json">
+  <%- JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: site.name,
+    description: site.description,
+    url: site.url,
+    telephone: '+84' + site.phone.slice(1),
+    areaServed: 'VN',
+    knowsAbout: services.map(s => s.name)
+  }) %>
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#main">Bỏ qua tới nội dung</a>
+
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="<%= site.name %> — Trang chủ">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="var(--moss)"/>
+        <path d="M20 8c5.5 3.4 8 7.6 8 12.2C28 25.6 24.4 30 20 32c-4.4-2-8-6.4-8-11.8C12 15.6 14.5 11.4 20 8Z" fill="none" stroke="var(--paper)" stroke-width="1.6"/>
+        <path d="M20 13v19M20 19l-3.6-2.6M20 24l4-2.8" fill="none" stroke="var(--sand)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text"><span class="brand-name">Mộc Nhiên</span><span class="brand-sub">Content</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Điều hướng chính" data-nav>
+      <ul class="nav-list">
+        <% services.forEach(function (s) { %>
+          <li><a class="nav-link<%= path === '/dich-vu/' + s.slug ? ' is-active' : '' %>" href="/dich-vu/<%= s.slug %>"<%- path === '/dich-vu/' + s.slug ? ' aria-current="page"' : '' %>><%= s.navName %></a></li>
+        <% }) %>
+      </ul>
+      <a class="btn btn-primary btn-sm nav-cta" href="<%= path.startsWith('/dich-vu/') ? '#dang-ky' : '/#dich-vu' %>">Đăng ký tư vấn</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
+      <span class="sr-only">Mở menu</span>
+      <%- icon('menu', 'icon icon-open') %><%- icon('close', 'icon icon-close') %>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav" hidden data-mobile-nav>
+    <ul>
+      <% services.forEach(function (s) { %>
+        <li><a href="/dich-vu/<%= s.slug %>"><span class="mobile-num"><%= s.number %></span><%= s.name %></a></li>
+      <% }) %>
+    </ul>
+    <a class="btn btn-primary btn-block" href="<%= site.zalo %>" target="_blank" rel="noopener">Nhắn Zalo <%= site.phoneDisplay %></a>
+  </div>
+</header>
+
+<main id="main">

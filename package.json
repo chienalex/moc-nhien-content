@@ -1,0 +1,22 @@
+{
+  "name": "moc-nhien-content",
+  "version": "1.0.0",
+  "description": "Website dịch vụ của Mộc Nhiên Content — quảng cáo Facebook, viết bài quảng cáo, chăm sóc Fanpage, tư vấn marketing online.",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^8.0.0"
+  }
+}

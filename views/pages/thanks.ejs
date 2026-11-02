@@ -1,0 +1,13 @@
+<%- include('../partials/head') %>
+<section class="section simple-page">
+  <div class="container narrow">
+    <div class="success-icon"><%- icon('check') %></div>
+    <h1 class="h2">Mộc Nhiên đã nhận thông tin!</h1>
+    <p class="lead">Cảm ơn bạn đã đăng ký. Mộc Nhiên sẽ liên hệ qua Zalo hoặc điện thoại trong thời gian sớm nhất.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Về trang chủ</a>
+      <a class="btn btn-ghost" href="<%= site.zalo %>" target="_blank" rel="noopener">Nhắn Zalo <%= site.phoneDisplay %></a>
+    </div>
+  </div>
+</section>
+<%- include('../partials/foot') %>

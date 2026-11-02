@@ -1,0 +1,106 @@
+<%- include('../partials/head') %>
+
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="container page-hero-grid">
+    <div>
+      <nav class="breadcrumb reveal" aria-label="Đường dẫn">
+        <a href="/">Trang chủ</a><span aria-hidden="true">/</span><a href="/#dich-vu">Dịch vụ</a><span aria-hidden="true">/</span><span aria-current="page"><%= service.navName %></span>
+      </nav>
+      <p class="eyebrow reveal">Dịch vụ <%= service.number %></p>
+      <h1 class="display display-sm reveal" id="page-title"><%= service.name %></h1>
+      <p class="page-headline reveal"><%= service.headline %></p>
+      <p class="lead reveal"><%= service.intro %></p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary btn-lg" href="#dang-ky">Đăng ký dịch vụ <%- icon('arrow') %></a>
+        <a class="btn btn-ghost btn-lg" href="#goi">Xem các gói</a>
+      </div>
+    </div>
+    <aside class="hero-card reveal" aria-label="Điểm nổi bật">
+      <span class="hero-card-icon"><%- icon(service.icon) %></span>
+      <p class="hero-card-title">Bạn nhận được</p>
+      <ul>
+        <% service.highlights.forEach(function (h) { %><li><%- icon('check') %><%= h %></li><% }) %>
+      </ul>
+      <p class="hero-card-note">Giá được báo riêng sau buổi tư vấn miễn phí.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section tiers-section" id="goi" aria-labelledby="tiers-title">
+  <div class="container">
+    <div class="section-head split reveal">
+      <div>
+        <p class="eyebrow">Gói dịch vụ</p>
+        <h2 class="h2" id="tiers-title"><%= service.tiersTitle %></h2>
+      </div>
+      <p class="lead"><%= service.tiersNote %></p>
+    </div>
+
+    <div class="tiers tiers-<%= service.tiers.length %>">
+      <% service.tiers.forEach(function (t, i) {
+           var isAds = !!service.form.extraOptions && service.slug === 'quang-cao-facebook-ads';
+           var attr = isAds ? 'data-pick-extra="' + service.form.extraOptions[i] + '"' : 'data-pick-choice="' + (service.form.choices[i] || '') + '"';
+      %>
+        <article class="tier<%= t.featured ? ' is-featured' : '' %> reveal">
+          <% if (t.featured) { %><span class="tier-badge">Được chọn nhiều</span><% } %>
+          <h3 class="tier-name"><%= t.name %></h3>
+          <p class="tier-meta"><%= t.meta %></p>
+          <ul class="tier-list">
+            <% t.items.forEach(function (it) { %><li><%- icon('check') %><%= it %></li><% }) %>
+          </ul>
+          <a class="btn <%= t.featured ? 'btn-primary' : 'btn-ghost' %> btn-block" href="#dang-ky" <%- attr %>>Đăng ký gói này</a>
+        </article>
+      <% }) %>
+    </div>
+
+    <% if (service.extras.length) { %>
+      <div class="extras reveal">
+        <%- icon('sparkle') %>
+        <p><% service.extras.forEach(function (e) { %><%= e %> <% }) %></p>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/process') %>
+
+<section class="section register" id="dang-ky" aria-labelledby="register-title">
+  <div class="container register-grid">
+    <div class="register-copy reveal">
+      <p class="eyebrow">Đăng ký dịch vụ</p>
+      <h2 class="h2" id="register-title">Để lại thông tin,<br>Mộc Nhiên gọi lại cho bạn.</h2>
+      <p class="lead">Không cần biết trước mình cần gói nào — chỉ cần chọn những mục bạn quan tâm, Mộc Nhiên sẽ tư vấn phương án phù hợp nhất.</p>
+      <ul class="register-points">
+        <li><%- icon('clock') %><span><strong>Phản hồi nhanh</strong> trong giờ hành chính</span></li>
+        <li><%- icon('chat') %><span><strong>Tư vấn miễn phí</strong> qua Zalo hoặc điện thoại</span></li>
+        <li><%- icon('shield') %><span><strong>Bảo mật</strong> thông tin của bạn</span></li>
+      </ul>
+      <a class="register-zalo" href="<%= site.zalo %>" target="_blank" rel="noopener">
+        <span class="zalo-badge">Zalo</span>
+        <span>Cần gấp? Nhắn ngay<br><strong><%= site.phoneDisplay %></strong></span>
+      </a>
+    </div>
+    <div class="form-card reveal">
+      <%- include('../partials/lead-form', { service: service }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/faq') %>
+
+<section class="section other-services" aria-labelledby="other-title">
+  <div class="container">
+    <h2 class="h3" id="other-title">Dịch vụ khác của Mộc Nhiên</h2>
+    <div class="other-grid">
+      <% services.filter(function (s) { return s.slug !== service.slug; }).forEach(function (s) { %>
+        <a class="other-card" href="/dich-vu/<%= s.slug %>">
+          <span class="service-icon"><%- icon(s.icon) %></span>
+          <span><strong><%= s.name %></strong><small><%= s.short %></small></span>
+          <%- icon('arrow', 'icon other-arrow') %>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/foot') %>

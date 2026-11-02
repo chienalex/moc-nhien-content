@@ -1,0 +1,17 @@
+<section class="section process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Quy trình làm việc</p>
+      <h2 class="h2" id="process-title">Bốn bước, không vòng vo.</h2>
+    </div>
+    <ol class="steps">
+      <% steps.forEach(function (st, i) { %>
+        <li class="step reveal">
+          <span class="step-num"><%= String(i + 1).padStart(2, '0') %></span>
+          <h3 class="step-title"><%= st.title %></h3>
+          <p><%= st.text %></p>
+        </li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
