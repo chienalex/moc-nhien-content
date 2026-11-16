@@ -162,6 +162,10 @@
         })
         .then(function (data) {
           if (data.ok) {
+            // Báo chuyển đổi cho Meta Pixel (nếu đã gắn).
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'Lead', { content_name: payload.service || '', content_category: 'Đăng ký tư vấn' });
+            }
             form.hidden = true;
             success.hidden = false;
             success.focus();

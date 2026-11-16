@@ -81,11 +81,20 @@ File `.env` (chứa chuỗi bí mật) đã được loại khỏi Git qua `.git
    - Application root: `moc-nhien-content`
    - Application URL: tên miền của bạn
    - Application startup file: `app.js`
-   - *Environment variables*: thêm `NODE_ENV=production`, `SITE_URL=https://ten-mien-cua-ban`, `GOOGLE_SCRIPT_URL=...`, `GOOGLE_SCRIPT_SECRET=...`
+   - *Environment variables*: thêm `NODE_ENV=production`, `SITE_URL=https://ten-mien-cua-ban`, `GOOGLE_SCRIPT_URL=...`, `GOOGLE_SCRIPT_SECRET=...`, `FB_PIXEL_ID=...`
 3. Bấm **Run NPM Install**, sau đó **Restart**.
 4. cPanel → **SSL/TLS Status** → *Run AutoSSL* để bật HTTPS.
 
 **Cập nhật về sau:** push code lên GitHub → cPanel *Git Version Control* → *Manage* → *Update from Remote* → *Setup Node.js App* → **Restart**.
+
+### Meta (Facebook) Pixel
+Điền `FB_PIXEL_ID=<dãy số pixel>` vào `.env` (hoặc biến môi trường trên hosting) rồi khởi động lại app. Các sự kiện được gửi:
+- `PageView` — mọi trang.
+- `ViewContent` — khi xem trang dịch vụ `/dich-vu/...`.
+- `Lead` — khi gửi form đăng ký thành công.
+- `Contact` — khi bấm nút Zalo hoặc gọi điện.
+
+Kiểm tra bằng tiện ích *Meta Pixel Helper* hoặc mục *Kiểm tra sự kiện* trong Trình quản lý sự kiện.
 
 ### Đang dùng — AMD Hosting iNET (1Panel) · https://mocnhienads.com
 Gói này không có mục *Setup Node.js App*, nên website được chạy qua Passenger:

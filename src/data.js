@@ -11,6 +11,8 @@ const site = {
   phoneDisplay: '0964.646.205',
   zalo: 'https://zalo.me/0964646205',
   url: process.env.SITE_URL || 'http://localhost:3000',
+  // Meta (Facebook) Pixel ID — chỉ gồm chữ số. Để trống thì không gắn pixel.
+  fbPixelId: /^\d{5,20}$/.test(process.env.FB_PIXEL_ID || '') ? process.env.FB_PIXEL_ID : '',
 };
 
 const industries = [
