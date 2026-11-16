@@ -87,6 +87,17 @@ File `.env` (chứa chuỗi bí mật) đã được loại khỏi Git qua `.git
 
 **Cập nhật về sau:** push code lên GitHub → cPanel *Git Version Control* → *Manage* → *Update from Remote* → *Setup Node.js App* → **Restart**.
 
+### Đang dùng — AMD Hosting iNET (1Panel) · https://mocnhienads.com
+Gói này không có mục *Setup Node.js App*, nên website được chạy qua Passenger:
+- Code: `~/moc-nhien-content` (clone từ GitHub), cấu hình ở `~/moc-nhien-content/.env`.
+- `~/public_html/.htaccess` trỏ Passenger tới app (Node.js 22 tại `/opt/alt/alt-nodejs22`).
+- Tên miền đi qua OneShield; bản ghi A `@` và `www` trỏ về `202.92.5.66`.
+
+**Cập nhật sau khi push lên GitHub:** 1Panel → *Tính năng nâng cao* → **Terminal**, chạy:
+```bash
+cd ~/moc-nhien-content && git pull && PATH=/opt/alt/alt-nodejs22/root/usr/bin:$PATH npm ci --omit=dev && mkdir -p tmp && touch tmp/restart.txt
+```
+
 ### Cách B — VPS / Cloud Server iNET
 ```bash
 git clone https://github.com/<tai-khoan>/moc-nhien-content.git && cd moc-nhien-content
